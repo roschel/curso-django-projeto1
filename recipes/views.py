@@ -9,3 +9,11 @@ def home(request):
         template_name="recipes/pages/home.html",
         context={"name": "João"},
     )
+
+
+def recipe(request, id):
+    return render(
+        request=request,
+        template_name="recipes/pages/home.html",
+        context={"name": "João"},
+    )
