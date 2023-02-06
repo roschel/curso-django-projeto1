@@ -9,3 +9,4 @@ pyflakes==3.0.1
 sqlparse==0.4.3
 tomli==2.0.1
 typing_extensions==4.4.0
+black
