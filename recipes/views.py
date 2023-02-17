@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.http import Http404, HttpResponse
 from django.shortcuts import render
 
 from utils.recipes.factory import make_recipe
@@ -20,6 +20,10 @@ def category(request, category_id):
     recipes = Recipe.objects.filter(
         category__id=category_id, is_published=True
     ).order_by("-id")
+
+    if not recipes:
+        raise Http404("Not found")
+
     return render(
         request=request,
         template_name="recipes/pages/category.html",
