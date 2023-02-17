@@ -23,7 +23,10 @@ def category(request, category_id):
     return render(
         request=request,
         template_name="recipes/pages/category.html",
-        context={"recipes": recipes},
+        context={
+            "recipes": recipes,
+            "title": f"{recipes.first().category.name} - Category",
+        },
     )
 
 
