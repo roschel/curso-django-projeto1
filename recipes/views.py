@@ -34,8 +34,13 @@ def category(request, category_id):
 
 
 def recipe(request, id):
+    recipe = Recipe.objects.filter(pk=id, is_published=True).order_by("-id").first()
+
     return render(
         request=request,
         template_name="recipes/pages/recipe_view.html",
-        context={"recipe": make_recipe(), "is_detail_page": True},
+        context={
+            "recipe": recipe,
+            "is_detail_page": True,
+        },
     )
