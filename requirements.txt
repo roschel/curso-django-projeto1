@@ -14,3 +14,4 @@ faker
 pillow
 pytest
 pytest-django
+pytest-watch
