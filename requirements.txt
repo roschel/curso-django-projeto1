@@ -12,3 +12,5 @@ typing_extensions==4.4.0
 black
 faker
 pillow
+pytest
+pytest-django
