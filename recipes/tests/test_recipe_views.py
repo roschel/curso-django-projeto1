@@ -7,9 +7,6 @@ from .test_recipe_base import RecipeTestBase
 
 
 class RecipeViewsTest(RecipeTestBase):
-    def tearDown(self) -> None:
-        return super().tearDown()
-
     def test_recipe_home_view_function_is_correct(self):
         view = resolve(reverse("recipes:home"))
         self.assertIs(view.func, views.home)
@@ -27,6 +24,7 @@ class RecipeViewsTest(RecipeTestBase):
         self.assertIn("No recipes found", response.content.decode(response.charset))
 
     def test_recipe_home_template_loads_recipes(self):
+        self.make_recipe()
         response = self.client.get(path=reverse("recipes:home"))
         response_recipes = response.context.get("recipes")
 
